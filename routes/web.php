@@ -13,6 +13,9 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+Route::get('/game', function () {
+    return Inertia::render('Game');
+})->middleware(['auth'])->name('game');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
