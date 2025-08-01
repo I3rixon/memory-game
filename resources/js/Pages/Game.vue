@@ -10,7 +10,7 @@
     >
       {{ message }}
     </div>
-    <div class="flex justify-center h-screen">
+    <div class="flex justify-center game-container">
         <!-- Game field -->
         <div class="grid grid-cols-4 gap-2">
             <div
