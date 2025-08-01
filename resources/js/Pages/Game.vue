@@ -112,6 +112,7 @@ function checkWin() {
   if (cards.value.every(c => c.matched)) {
     isGameWon.value = true
     message.value = '🏁 You won the game!'
+    saveGame()
   }
   else{
     setTimeout(() => {
@@ -119,4 +120,15 @@ function checkWin() {
     }, 2000)
   }
 }
+
+function saveGame() {
+  axios.post('/game/save', {
+    clicks: total_clicks.value
+  }).then(response => {
+    console.log('Game saved:', response.data)
+  }).catch(error => {
+    console.error('Save error:', error)
+  })
+}
+
 </script>

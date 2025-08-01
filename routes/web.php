@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\GameController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -13,9 +14,12 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+/*game*/
 Route::get('/game', function () {
     return Inertia::render('Game');
 })->middleware(['auth'])->name('game');
+Route::post('/game/save', [GameController::class, 'store'])->middleware('auth');
+// End of game routes
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
